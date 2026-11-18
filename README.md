@@ -1,6 +1,6 @@
 # Ilha do Sal — Guia da Viagem (22–28 mar 2027)
 
-App web para o Sol Dunas Family Fun e a Ilha do Sal: roteiro, mapa 3D e ilustrado, comer, planear, grupo e extras.
+App web para o Hotel Oásis Belorizonte e a Ilha do Sal: roteiro, mapa 3D e ilustrado, comer, planear, grupo e extras.
 
 ## Publicar no GitHub Pages
 1. Carreguem todos os ficheiros desta pasta (incluindo `audio/` e `fotos/`).

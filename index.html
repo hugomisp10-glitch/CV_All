@@ -69,7 +69,7 @@ select.sel{width:100%;padding:10px;border-radius:10px;margin-bottom:8px;font:15p
 .gob,.bgm{border:1px solid #fff3;background:#ffffff14;color:#fff;border-radius:99px;padding:9px 14px;font:700 13px system-ui;margin:4px 6px 0 0;min-height:40px}.bgm.on{background:var(--g);color:#2b1c07}
 footer{text-align:center;color:#7d9296;font-size:11.5px;padding:20px}
 </style></head><body>
-<div class="hero"><div style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--g);font-weight:700">Ilha do Sal · Cabo Verde</div><h1>Sol Dunas <em>Family Fun</em><br>7 dias de resort e ilha</h1><p>22–28 março 2027 · voo de regresso ao início da madrugada de 29 · all inclusive</p><div id="cd">🏝️ …</div></div>
+<div class="hero"><div style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--g);font-weight:700">Ilha do Sal · Cabo Verde</div><h1>Hotel Oásis <em>Belorizonte</em><br>7 dias de hotel e ilha</h1><p>22–28 março 2027 · chegada à 00:05 · voo de regresso ao início da madrugada de 29 · grupo de 9</p><div id="cd">🏝️ …</div></div>
 <div class="tabs" id="tabs"></div>
 <div id="panels"></div>
 <footer>Datas, horários, preços e moradas a reconfirmar.<br>Fotos do guia original · Mapas: OpenFreeMap / OpenStreetMap · Google Maps</footer>
@@ -83,23 +83,28 @@ const gl=a=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponen
 
 // dias: [tipo,hora,título,descrição]
 const DAYS=[
-['d1','Dia 1 · Seg 22','Resort · chegada','Chegada à Ilha do Sal e primeiro contacto com o resort',[
-['transport','—','Aterragem no aeroporto Amílcar Cabral (SID)','Hora a confirmar. ~15–17 min até ao resort. Confirmar registo online (EASE) e taxa de segurança aeroportuária antes de partir.'],
-['transport','—','Transfer para o Sol Dunas Family Fun','Normalmente incluído no pacote: confirmar com a agência.'],
-['','15:00','Check-in','O check-in começa às 15h00. Se chegarem antes, deixem as malas e comecem pela piscina.'],
-['','Tarde','Volta pelo resort','Piscinas, parque aquático, mini-club, bares e restaurantes.'],
-['food','Noite','Jantar no resort (all inclusive)','Sol Grille ou buffet.'],
-['tip','Noite','Combinar as 3 saídas','Falar com a receção e reservar os lugares dos dias 3, 5 e 6.']]],
-['d2','Dia 2 · Ter 23','Dia de resort','Parque aquático, praia de Algodoeiro e mini-club',[
-['','9:30','Parque aquático e piscinas','Acesso gratuito para hóspedes, segundo as páginas de reserva. Confirmar horários.'],
+['d1','Dia 1 · Seg 22','Resort · chegada à 00:05','Já na ilha: chegada à 00:05 e dia de resort',[
+['transport','00:05','Aterragem no aeroporto Amílcar Cabral (SID)','Chegada ao início da madrugada de segunda. Contem ~45–60 min com passaportes e bagagem. Confirmar registo online (EASE) e taxa de segurança aeroportuária antes de partir.'],
+['transport','~01:15','Transfer para o Hotel Oásis Belorizonte','~15 min. Com 9 pessoas: minivan de 9 lugares ou 2 táxis. Confirmem com a agência o transfer a esta hora.'],
+['tip','~01:45','Receção do hotel (check-in tardio)','O check-in oficial é às 15h00 e, segundo as páginas de reserva, o check-in tardio é limitado depois da meia-noite. Avisem o hotel por escrito da chegada por volta das 01:45 (ou reservem a noite de 21 para 22) e confirmem se o regime all inclusive já está ativo.'],
+['','Madrugada','Descansar','Se os quartos não estiverem prontos, peçam um espaço para esperar e guardem as malas.'],
+['food','8:00','Pequeno-almoço no resort','All inclusive.'],
+['','10:00','Volta pelo resort e piscinas','3 piscinas, piscina infantil, clube infantil, bares e restaurantes. Sol forte: protetor e chapéu.'],
 ['food','13:00','Almoço no resort',''],
-['','15:00','Praia de Algodoeiro','A ~800 m do resort. Sol e vento fortes: protetor solar.'],
-['','17:00','Mini-club e animação','Horários na receção.'],
+['','15:00','Quarto disponível','Se ainda não tiverem quarto, falem com a receção por volta das 15h00 (hora oficial de check-in).'],
+['','17:30','Pôr do sol e descanso','Dia calmo para recuperar da viagem.'],
+['food','20:00','Jantar no resort',''],
+['tip','Noite','Combinar as 3 saídas','Falar com a receção e reservar lugares para 9 pessoas nos dias 3, 5 e 6.']]],
+['d2','Dia 2 · Ter 23','Dia de resort','Piscinas, praia de Santa Maria e clube infantil',[
+['','9:30','Piscinas e piscina infantil','O hotel tem 3 piscinas exteriores e uma piscina para crianças.'],
+['food','13:00','Almoço no resort',''],
+['','15:00','Praia de Santa Maria','Em frente ao hotel. Sol e vento fortes: protetor solar.'],
+['','17:00','Clube infantil e animação','Clube infantil gratuito, segundo as páginas de reserva. Horários na receção.'],
 ['food','20:00','Jantar temático',''],
 ['tip','21:00','Espetáculo do resort','Conforme a programação.']]],
 ['d3','Dia 3 · Qua 24','Volta à ilha em 4x4 · 1 dia fora','Todos os pontos de interesse numa só saída',[
 ['food','8:00','Pequeno-almoço cedo','Levem água, chapéu e protetor solar.'],
-['transport','8:30','Saída do resort (4x4)','Excursão de dia inteiro, ~8–9 h. Reservar com o resort ou operador local.'],
+['transport','8:30','Saída do resort (4x4)','Excursão de dia inteiro, ~8–9 h. Com 9 pessoas: 2 viaturas 4x4 ou minibus. Reservar com o resort ou operador local.'],
 ['','9:00','Monte Leão','Antigo cone vulcânico com vista sobre a ilha.'],
 ['','9:45','Terra Boa e Deserto de Viana','Planície com miragens e dunas no interior.'],
 ['','11:00','Espargos','Capital: mercado e ruas coloridas.'],
@@ -110,20 +115,20 @@ const DAYS=[
 ['','17:30','Regresso ao resort','~30 min.'],
 ['food','20:00','Jantar no resort','']]],
 ['d4','Dia 4 · Qui 25','Resort e Viveiro','Dia de descanso com jardim e zoo a pé',[
-['','9:30','Viveiro Botanical Garden & Zoo','A ~10 min a pé do resort, bom para crianças.'],
+['','9:30','Viveiro Botanical Garden & Zoo','Perto do hotel (confirmar a distância a pé ou de táxi), bom para crianças.'],
 ['food','12:30','Almoço',''],
 ['','14:00','Desportos aquáticos e piscinas','Alguns podem estar incluídos: confirmar.'],
 ['','17:30','Pôr do sol na praia',''],
 ['food','20:30','Noite cabo-verdiana','Morna e coladeira, se houver programação.']]],
 ['d5','Dia 5 · Sex 26','Catamaran · meio dia fora','Mar, snorkel e uma tarde no resort',[
 ['food','8:00','Pequeno-almoço',''],
-['transport','9:00','Saída do Cais de Santa Maria','Catamaran com snorkel, ~4 h. Reservar com antecedência.'],
+['transport','9:00','Saída do Cais de Santa Maria','Catamaran com snorkel, ~4 h. Reservar para 9 pessoas com antecedência.'],
 ['','10:00','Snorkel e paragem para nadar','Tartarugas: a desova é de junho a outubro. Perguntar ao operador.'],
 ['food','12:30','Almoço a bordo ou no resort',''],
-['','15:00','Tarde livre no resort','Piscinas e parque aquático.'],
+['','15:00','Tarde livre no resort','Piscinas e praia.'],
 ['food','20:00','Jantar','']]],
 ['d6','Dia 6 · Sáb 27','Santa Maria · meio dia fora','Vila, cais, mercado e Ponta Preta',[
-['transport','9:30','Resort → Santa Maria','~5–10 min.'],
+['transport','9:30','Hotel → Santa Maria','A pé ~8–11 min ou táxi.'],
 ['','9:45','Cais e Praça de Santa Maria','Pescadores e a vila a pé.'],
 ['','10:45','Mercado de artesanato','Lembranças e música.'],
 ['food','12:30','Almoço fora do resort','Ver Comer, zona Santa Maria ou Ponta Preta.'],
@@ -131,19 +136,19 @@ const DAYS=[
 ['','16:00','Regresso ao resort','']]],
 ['d7','Dia 7 · Dom 28','Resort · voo da madrugada','Último dia e transfer para o aeroporto',[
 ['','9:30','Manhã de piscina',''],
-['','12:00','Check-out','Check-out às 12h00. Pedir guarda-malas e, se possível, late check-out ou quarto de apoio.'],
+['','11:00','Check-out','Check-out às 11h00. O hotel tem depósito de bagagens: peçam guarda-malas e, se possível, late check-out ou quarto de apoio.'],
 ['','Tarde','Piscina e praia','Peçam à receção onde se podem arranjar e tomar duche.'],
 ['food','18:30','Jantar de despedida no resort',''],
-['transport','21:30','Transfer para o aeroporto','Chegar cerca de 3 h antes do voo (hora a confirmar).'],
+['transport','21:30','Transfer para o aeroporto','Minivan de 9 lugares ou 2 táxis. Chegar cerca de 3 h antes do voo (hora a confirmar).'],
 ['','Madrugada de 29','Voo de regresso','Voo ao início da madrugada de 29 de março.']]]];
-const VER=[['🏨 Resort e arredores',[['Sol Dunas Family Fun','Parque aquático, mini-club e piscinas','Sol Dunas Family Fun, Santa Maria, Sal'],['Praia de Algodoeiro','Praia a ~800 m do resort','Praia de Algodoeiro, Sal'],['Viveiro Botanical Garden & Zoo','Jardim e zoo, ~10 min a pé','Viveiro Botanical Garden & Zoo, Sal'],['Ponta Preta','Kitesurf e windsurf','Ponta Preta, Sal']]],
+const VER=[['🏨 Resort e arredores',[['Hotel Oásis Belorizonte','3 piscinas, piscina infantil e clube infantil','Hotel Oasis Belorizonte, Santa Maria, Sal'],['Praia de Santa Maria','Em frente ao hotel','Praia de Santa Maria, Sal'],['Viveiro Botanical Garden & Zoo','Jardim e zoo perto do hotel','Viveiro Botanical Garden & Zoo, Sal'],['Ponta Preta','Kitesurf e windsurf','Ponta Preta, Sal']]],
 ['🏘️ Santa Maria',[['Cais de Santa Maria','Pescadores e vista','Cais de Santa Maria, Sal'],['Praça de Santa Maria','Coração da vila','Santa Maria, Sal'],['Mercado de artesanato','Lembranças e música','Mercado de artesanato, Santa Maria, Sal']]],
 ['🌋 Volta à ilha (dia 3)',[['Monte Leão','Cone vulcânico com vista','Monte Leão, Sal'],['Terra Boa e Deserto de Viana','Miragens e dunas','Deserto de Viana, Sal'],['Espargos','Capital da ilha','Espargos, Sal'],['Buracona (Olho Azul)','Piscina natural, luz azul','Buracona, Sal'],['Shark Bay e Palmeira','Tubarões-limão e porto do sal','Palmeira, Sal'],['Salinas de Pedra de Lume','Banho flutuante','Pedra de Lume, Sal']]]];
-const GPS=[['Aeroporto Amílcar Cabral (SID)','','Aeroporto Amílcar Cabral, Sal'],['Sol Dunas Family Fun','Check-in 15h00, check-out 12h00','Sol Dunas Family Fun, Santa Maria, Sal']];
+const GPS=[['Aeroporto Amílcar Cabral (SID)','','Aeroporto Amílcar Cabral, Sal'],['Hotel Oásis Belorizonte','Check-in 15h00, check-out 11h00','Hotel Oasis Belorizonte, Santa Maria, Sal']];
 const BAG=['Roupa leve de verão','2 ou mais fatos de banho','Protetor solar forte (FPS 50+)','Chapéu e óculos de sol','Calçado confortável para excursões','Roupa leve para a noite (vento)','Adaptador de tomada tipo C/F','Passaporte e seguro de viagem','Powerbank','Medicamentos pessoais','Brinquedos e snacks para as crianças'];
 
-const RES=[['Sol Grille','Grill/BBQ, pequeno-almoço, almoço e jantar (family friendly)',''],['Buffets e snack-bars','Várias opções ao longo do dia (all inclusive)',''],['Bares do resort','Cerca de 4 bares, segundo guias de reserva',''],['Club Lagoon Premium VIP (se contratado)','Dá acesso a restaurantes do Meliá Tortuga','']];
-const FORA=[['Restaurante Ponta Preta','Peixe grelhado à beira-mar','Ponta Preta, Sal','~15–20€'],['Restaurante Nirvana','Cozinha internacional e cabo-verdiana','Nirvana, Santa Maria, Sal','~18–25€'],['Bar Nortada','Junto à praia, bom para o pôr do sol','Nortada, Santa Maria, Sal','~15–22€'],['Restaurante Ramoxa','Peixe fresco e lagosta','Ramoxa, Santa Maria, Sal','~18–28€'],['Ocean Café','Brunch à beira-mar','Ocean Café, Santa Maria, Sal','~10–15€'],['Restaurante Cesária','Tradicional, música ao vivo ao fim de semana','Cesária, Santa Maria, Sal','~15–20€'],['Beach Club Casa Ambiente','Praia e petiscos','Casa Ambiente, Santa Maria, Sal','~12–18€']];
+const RES=[['Flor de Sal','Restaurante do hotel',''],['Grill Salinas','Grelhados no hotel',''],['Santa Maria (restaurante do hotel)','Restaurante do hotel',''],['Bares','3 bares, bar de praia, bar de piscina, swim-up e snack-bar',''],['Regime','Algumas tarifas são all inclusive: confirmar a vossa','']];
+const FORA=[['Restaurante Ponta Preta','Peixe grelhado à beira-mar','Ponta Preta, Sal','~15–20€'],['Restaurante Nirvana','Cozinha internacional e cabo-verdiana','Nirvana, Santa Maria, Sal','~18–25€'],['Bar Nortada','Junto à praia, bom para o pôr do sol','Nortada, Santa Maria, Sal','~15–22€'],['Restaurante Ramoxa','Peixe fresco e lagosta','Ramoxa, Santa Maria, Sal','~18–28€'],['Ocean Café','Brunch à beira-mar','Ocean Café, Santa Maria, Sal','~10–15€'],['Restaurante Cesária','Tradicional, música ao vivo ao fim de semana','Cesária, Santa Maria, Sal','~15–20€'],['Beach Club Casa Ambiente','Praia e petiscos','Casa Ambiente, Santa Maria, Sal','~12–18€'],['Papaya','A ~8 min a pé do hotel','Papaya, Santa Maria, Sal','❓'],['Restaurante Américo\'s','A ~10 min a pé do hotel','Américo\'s, Santa Maria, Sal','❓']];
 
 function list(key,items,price){return '<div class="pl">'+items.map((it,i)=>{const id=key+i,on=S.v[id]?' on':'';return `<div class="pc"><span class="ck${on}" data-v="${id}">✓</span><div><div class="pn">${esc(it[0])}</div>${it[1]?`<div class="pd">${esc(it[1])}</div>`:''}${it[2]?`<div class="pg">📍 ${esc(it[2])} · <a target="_blank" rel="noopener" href="${gl(it[2])}">abrir ↗</a></div>`:''}</div>${price&&it[3]?`<span class="pp">${it[3]}</span>`:''}</div>`}).join('')+'</div>'}
 
@@ -160,10 +165,10 @@ h+=`<div class="panel" id="mapas"><h2>Mapa 3D da Ilha do Sal</h2><p class="lead"
 <input id="q" placeholder="🔎 Pesquisar praia, vila, ponto de interesse…" autocomplete="off"><div id="res"></div><div class="chs" id="chs"></div>
 <div id="mw"><div id="map"></div><div class="tools"><button id="b3" class="on" title="Inclinar 3D">🧊</button><button id="bo" title="Rodar">↻</button><button id="bs" title="Estilo">🗺</button><button id="bt" title="Trajetos">🧭</button></div>
 <div id="sh"><button id="x" aria-label="Fechar">✕</button><div id="shc"></div></div></div>
-<div class="blk" style="margin-top:14px"><h3>🗺️ Rotas no Google Maps</h3><div class="pl">${[['Aeroporto → Resort','Aeroporto Amílcar Cabral to Sol Dunas Family Fun, Sal'],['Dia 3: Resort → Pedra de Lume','Sol Dunas Family Fun to Pedra de Lume, Sal'],['Dia 5: Cais de Santa Maria','Cais de Santa Maria, Sal'],['Dia 6: Resort → Santa Maria','Sol Dunas Family Fun to Santa Maria, Sal']].map(r=>`<div class="pc"><div><div class="pn">${r[0]}</div></div><a target="_blank" rel="noopener" href="${gl(r[1])}">Abrir ↗</a></div>`).join('')}</div></div></div>`;
+<div class="blk" style="margin-top:14px"><h3>🗺️ Rotas no Google Maps</h3><div class="pl">${[['Aeroporto → Resort','Aeroporto Amílcar Cabral to Hotel Oasis Belorizonte, Santa Maria, Sal'],['Dia 3: Resort → Pedra de Lume','Hotel Oasis Belorizonte, Santa Maria to Pedra de Lume, Sal'],['Dia 5: Cais de Santa Maria','Cais de Santa Maria, Sal'],['Dia 6: Resort → Santa Maria','Hotel Oasis Belorizonte to Santa Maria, Sal']].map(r=>`<div class="pc"><div><div class="pn">${r[0]}</div></div><a target="_blank" rel="noopener" href="${gl(r[1])}">Abrir ↗</a></div>`).join('')}</div></div></div>`;
 h+=`<div class="panel" id="pratico"><h2>Guia prático</h2>
 <div class="blk"><h3>📝 Notas do grupo</h3><textarea id="notes" placeholder="Reservas, quarto, excursões… (guarda neste aparelho)"></textarea></div>
-<div class="blk"><h3>🏨 Sol Dunas Family Fun</h3><ul><li>Check-in às 15h00 e check-out às 12h00.</li><li>Parque aquático, piscinas, mini-club e vários bares e restaurantes.</li><li>Voo ao início da madrugada de 29: pedir guarda-malas e late check-out.</li></ul></div>
+<div class="blk"><h3>🏨 Hotel Oásis Belorizonte</h3><ul><li>Check-in às 15h00 e check-out às 11h00. Receção 24 h e depósito de bagagens.</li><li>3 piscinas, piscina infantil, clube infantil, ténis, ginásio e sala de jogos.</li><li>Confirmem que a vossa reserva é all inclusive: nem todas as tarifas são.</li><li>Chegada à 00:05: confirmar o check-in tardio. Voo ao início da madrugada de 29: pedir guarda-malas e late check-out.</li></ul></div>
 <div class="blk"><h3>📍 Moradas úteis</h3>${list('g',GPS)}</div>
 <div class="blk"><h3>🧳 Bagagem</h3>${list('b',BAG.map(x=>[x]))}</div>
 <button class="rb" id="rst">Repor marcações</button></div>`;
@@ -176,13 +181,13 @@ const c=e.target.closest('.ck');if(c){S.v[c.dataset.v]=!S.v[c.dataset.v];c.class
 const f=e.target.closest('[data-f]');if(f){document.querySelectorAll('.sw button,.fp').forEach(x=>x.classList.remove('on'));f.classList.add('on');$('f-'+f.dataset.f).classList.add('on')}});
 $('notes').value=S.notes||'';$('notes').oninput=e=>{S.notes=e.target.value;save()};
 $('rst').onclick=()=>{if(confirm('Repor todas as marcações de visitado?')){S.v={};save();location.reload()}};
-const dd=Math.ceil((new Date('2027-03-22T12:00:00Z')-Date.now())/864e5);$('cd').textContent=dd>0?`🌺 Faltam ${dd} dias para a viagem`:'🌺 Bom trip!';
+const dd=Math.ceil((new Date('2027-03-22T12:00:00Z')-Date.now())/864e5);$('cd').textContent=dd>0?`🏝️ Faltam ${dd} dias para a viagem`:'🌺 Bom trip!';
 
 /* ---- mapa 3D ---- */
 // tipo: [cor, emoji, legenda, prioridade]
 const K={air:['#1767b5','✈️','Aeroporto',0],hotel:['#d9482b','🏨','Resort',0],city:['#0d5c73','🏘️','Vila',0],vil:['#d9822b','🏡','Vila',1],view:['#2a7f62','🌄','Miradouro',2],nat:['#2f8a57','🌿','Natureza',2],beach:['#e0a82e','🏖️','Praia',2],cult:['#6a4c93','🛍️','Cultura',3],port:['#1767b5','⛵','Cais',2],rf:['#1f6fb0','🐟','Peixe & marisco',2],re:['#a8442a','🍖','Cozinha tradicional',2],rp:['#d98a1e','🍹','Petiscos & bar',2],rg:['#6b3a8a','⭐','Fine dining',2],rv:['#2a7f62','🌅','Com vista',2]};
-const D=[['sid','Aeroporto Amílcar Cabral (SID)','air',16.7414,-22.9494,'~15–17 min do resort.'],['res','Sol Dunas Family Fun (resort)','hotel',16.6020,-22.9290,'All inclusive com parque aquático e mini-club (localização aprox.).'],['sm','Santa Maria','city',16.5950,-22.9050,'Vila turística: cais, praça e mercado.'],['cais','Cais de Santa Maria','port',16.5925,-22.9045,'Pescadores e partida de catamarans.'],['mkt','Mercado de artesanato','cult',16.5975,-22.9045,'Lembranças e música.'],['alg','Praia de Algodoeiro','beach',16.6000,-22.9330,'A ~800 m do resort.'],['viv','Viveiro Botanical Garden & Zoo','nat',16.6035,-22.9280,'Jardim e zoo, ~10 min a pé do resort.'],['pp','Ponta Preta','beach',16.5910,-22.9420,'Kitesurf e windsurf.'],['ml','Monte Leão','view',16.5950,-22.9690,'Cone vulcânico com vista sobre a ilha.'],['tb','Terra Boa','nat',16.7250,-22.9380,'Planície com miragens.'],['viana','Deserto de Viana','nat',16.7060,-22.9640,'Dunas brancas no interior.'],['esp','Espargos','vil',16.7500,-22.9330,'Capital da ilha: mercado e ruas coloridas.'],['bur','Buracona (Olho Azul)','nat',16.7860,-22.9690,'Piscina natural; luz azul perto do meio-dia.'],['sb','Shark Bay','nat',16.7650,-22.9800,'Tubarões-limão em águas baixas (perto de Palmeira).'],['pal','Palmeira','vil',16.7560,-22.9780,'Antigo porto do sal, aldeia de pescadores.'],['pl','Salinas de Pedra de Lume','nat',16.7650,-22.8830,'Cratera vulcânica com banho flutuante.'],
-['r_sg','Sol Grille (resort)','re',16.6021,-22.9291,'Grelhados no resort, all inclusive.','Resort'],['r_pp','Restaurante Ponta Preta','rf',16.5915,-22.9425,'Peixe grelhado à beira-mar (loc. aprox.).','Ponta Preta'],['r_ni','Restaurante Nirvana','re',16.5960,-22.9060,'Cozinha internacional e cabo-verdiana, boa para grupos (loc. aprox.).','Santa Maria'],['r_no','Bar Nortada','rp',16.5940,-22.9055,'Junto à praia, bom para o pôr do sol (loc. aprox.).','Santa Maria'],['r_ra','Restaurante Ramoxa','rf',16.5965,-22.9040,'Peixe fresco e lagosta (loc. aprox.).','Santa Maria'],['r_oc','Ocean Café','rp',16.5945,-22.9048,'Brunch à beira-mar (loc. aprox.).','Santa Maria'],['r_ce','Restaurante Cesária','re',16.5970,-22.9065,'Cozinha tradicional, música ao vivo ao fim de semana (loc. aprox.).','Santa Maria'],['r_ca','Beach Club Casa Ambiente','rp',16.5935,-22.9035,'Praia e petiscos (loc. aprox.).','Santa Maria']];
+const D=[['sid','Aeroporto Amílcar Cabral (SID)','air',16.7414,-22.9494,'~15–17 min do resort.'],['res','Hotel Oásis Belorizonte','hotel',16.5937,-22.9105,'Em frente à praia de Santa Maria, ~15 min do aeroporto (localização aprox.).'],['sm','Santa Maria','city',16.5987,-22.905,'Vila turística: cais, praça e mercado.'],['cais','Cais de Santa Maria','port',16.5925,-22.9047,'Pescadores e partida de catamarans.'],['mkt','Mercado de artesanato','cult',16.5985,-22.9045,'Lembranças e música.'],['alg','Praia de Santa Maria','beach',16.5925,-22.9085,'Em frente ao hotel.'],['viv','Viveiro Botanical Garden & Zoo','nat',16.599,-22.915,'Jardim e zoo perto do hotel.'],['pp','Ponta Preta','beach',16.5935,-22.9395,'Kitesurf e windsurf.'],['ml','Monte Leão','view',16.599,-22.965,'Cone vulcânico com vista sobre a ilha.'],['tb','Terra Boa','nat',16.78,-22.94,'Planície com miragens.'],['viana','Deserto de Viana','nat',16.772,-22.962,'Dunas brancas no interior.'],['esp','Espargos','vil',16.756,-22.946,'Capital da ilha: mercado e ruas coloridas.'],['bur','Buracona (Olho Azul)','nat',16.79,-22.975,'Piscina natural; luz azul perto do meio-dia.'],['sb','Shark Bay','nat',16.77,-22.975,'Tubarões-limão em águas baixas (perto de Palmeira).'],['pal','Palmeira','vil',16.758,-22.982,'Antigo porto do sal, aldeia de pescadores.'],['pl','Salinas de Pedra de Lume','nat',16.763,-22.895,'Cratera vulcânica com banho flutuante.'],
+['r_sg','Grill Salinas (hotel)','re',16.5938,-22.9106,'Grelhados no hotel (loc. aprox.).','Resort'],['r_pp','Restaurante Ponta Preta','rf',16.5945,-22.9395,'Peixe grelhado à beira-mar (loc. aprox.).','Ponta Preta'],['r_ni','Restaurante Nirvana','re',16.5985,-22.907,'Cozinha internacional e cabo-verdiana, boa para grupos (loc. aprox.).','Santa Maria'],['r_no','Bar Nortada','rp',16.5945,-22.906,'Junto à praia, bom para o pôr do sol (loc. aprox.).','Santa Maria'],['r_ra','Restaurante Ramoxa','rf',16.599,-22.9035,'Peixe fresco e lagosta (loc. aprox.).','Santa Maria'],['r_oc','Ocean Café','rp',16.594,-22.905,'Brunch à beira-mar (loc. aprox.).','Santa Maria'],['r_ce','Restaurante Cesária','re',16.5995,-22.9065,'Cozinha tradicional, música ao vivo ao fim de semana (loc. aprox.).','Santa Maria'],['r_ca','Beach Club Casa Ambiente','rp',16.594,-22.9075,'Praia e petiscos (loc. aprox.).','Santa Maria']];
 const L=[['bus',['sid','sm']],['bus',['sm','esp']]];
 const TJ=[['Aeroporto → resort','~15–17 min','Transfer normalmente incluído.',[0],'sm'],['Santa Maria → Espargos','~25 min','Estrada principal para o interior.',[1],'esp']];
 const J=[['res','Resort'],['sm','Santa Maria'],['pl','Pedra de Lume'],['bur','Buracona'],['viana','Viana'],['pal','Palmeira'],['esp','Espargos'],['ml','Monte Leão']];
@@ -194,7 +199,7 @@ const vis=()=>{if(!map)return;const z=map.getZoom();ALL.forEach(a=>{a.e.classLis
 function show(a,fly){if(fly)map.flyTo({center:[a.lon,a.lat],zoom:Math.max(map.getZoom(),a.pr?15:13.5),pitch:62,bearing:map.getBearing()+25,duration:2000});
 const q=a.n.split(' (')[0]+', Sal, Cabo Verde';$('shc').innerHTML=`<h3>${a.em} ${esc(a.n)}</h3><p><b>${a.tp}</b></p><p>${esc(a.d)}</p>${H[a.id]?`<p><b>Como chegar:</b> ${esc(H[a.id])}</p>`:''}<a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(q)}">🚗 Ir</a><a target="_blank" rel="noopener" href="${gl(q)}">🗺 Google Maps</a><button class="b" id="vb">${S.v['m_'+a.id]?'✔ Visitado':'☐ Já visitei'}</button>`;
 $('vb').onclick=()=>{S.v['m_'+a.id]=!S.v['m_'+a.id];save();a.e.classList.toggle('vis',!!S.v['m_'+a.id]);$('vb').textContent=S.v['m_'+a.id]?'✔ Visitado':'☐ Já visitei'};$('sh').classList.add('o')}
-function initMap(){if(map){setTimeout(()=>map.resize(),50);return}
+function initMap(){if(map){setTimeout(()=>map.resize(),50);return}if(typeof maplibregl==='undefined'){alert('O mapa 3D precisa de internet. Podem usar já o mapa ilustrado (botão 🎨).');return}
 map=new maplibregl.Map({container:'map',style:STY[0],center:[-22.93,16.70],zoom:10.2,pitch:55,bearing:0,maxPitch:80,attributionControl:{compact:true}});
 map.addControl(new maplibregl.NavigationControl({visualizePitch:true}),'top-left');
 map.addControl(new maplibregl.GeolocateControl({positionOptions:{enableHighAccuracy:true},trackUserLocation:true,showUserLocation:true}),'top-left');
@@ -228,7 +233,7 @@ function renderRest(){const z=$('rz').value,c=$('rc').value;const m=ALL.filter(a
 document.addEventListener('click',e=>{const m=e.target.closest('[data-m]');if(!m)return;e.preventDefault();document.querySelector('.tab[data-p=mapas]').click();setTimeout(()=>show(BY[m.dataset.m],1),500)});
 renderRest();
 </script><script>
-const H={sid:'Transfer do resort (~15–17 min).',res:'Transfer ou táxi desde o aeroporto.',sm:'Táxi curto ou a pé desde o resort, conforme a zona.',cais:'Táxi desde o resort (~5–10 min).',alg:'A ~800 m do resort.',viv:'A ~10 min a pé do resort.',pp:'Táxi ou excursão (~5–10 min).',ml:'Excursão 4x4 ou táxi (~15 min).',pl:'Excursão 4x4 (~30 min).',bur:'Excursão 4x4 (~35 min).',viana:'Excursão 4x4 (~25 min).',tb:'Excursão 4x4 (~25 min).',esp:'Excursão ou táxi (~20 min).',pal:'Excursão 4x4 (~30 min).',sb:'Excursão 4x4 (~35 min).'};
+const H={sid:'Transfer do resort (~15–17 min).',res:'Transfer ou táxi desde o aeroporto (~15 min).',sm:'A pé desde o hotel (~8–11 min).',cais:'A pé desde o hotel (~8 min).',alg:'Em frente ao hotel.',viv:'Perto do hotel (confirmar distância).',pp:'Táxi ou excursão (~5–10 min).',ml:'Excursão 4x4 ou táxi (~15 min).',pl:'Excursão 4x4 (~30 min).',bur:'Excursão 4x4 (~35 min).',viana:'Excursão 4x4 (~25 min).',tb:'Excursão 4x4 (~25 min).',esp:'Excursão ou táxi (~20 min).',pal:'Excursão 4x4 (~30 min).',sb:'Excursão 4x4 (~35 min).'};
 (()=>{const NS='http://www.w3.org/2000/svg',O='stroke="#4a2c22" stroke-width="3.5" stroke-linejoin="round"';let sd=5;const rnd=()=>(sd=sd*16807%2147483647)/2147483647;
 const DEFS=`<defs><linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9be3f3"/><stop offset="1" stop-color="#4fb3d9"/></linearGradient><filter id="shd"><feDropShadow dx="2" dy="4" stdDeviation="3" flood-opacity=".3"/></filter>
 <symbol id="house" viewBox="0 0 100 100"><rect x="14" y="46" width="72" height="48" fill="#fff4e0" ${O}/><path d="M6 50L50 12L94 50Z" fill="#d9482b" ${O}/><rect x="22" y="60" width="14" height="14" fill="#6bb6d6" ${O}/><rect x="64" y="60" width="14" height="14" fill="#6bb6d6" ${O}/><path d="M42 94V72Q50 62 58 72V94Z" fill="#7a4a30"/></symbol>
@@ -263,14 +268,15 @@ const DEFS=`<defs><linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop off
 <symbol id="dice" viewBox="0 0 100 100"><rect x="14" y="24" width="72" height="70" rx="12" fill="#fff" ${O}/><g fill="#d9482b"><circle cx="34" cy="44" r="7"/><circle cx="66" cy="44" r="7"/><circle cx="50" cy="59" r="7"/><circle cx="34" cy="74" r="7"/><circle cx="66" cy="74" r="7"/></g></symbol>
 <symbol id="fort" viewBox="0 0 100 100"><rect x="8" y="42" width="84" height="52" fill="#e0c79a" ${O}/><path d="M8 42V26H22V42M36 42V26H50V42M64 42V26H78V42M92 42V26H78" fill="#e0c79a" ${O}/><path d="M40 94V70Q50 58 60 70V94Z" fill="#4a3022"/><path d="M20 58V66M80 58V66" stroke="#4a3022" stroke-width="5"/></symbol></defs>`;
 const R={sal:{n:'Ilha do Sal',sb:'Sol, vento e dunas',w:1400,h:2600,P:(lo,la)=>[(lo+22.99)*9000+60,(16.83-la)*9000+180],
-coast:[[-22.985,16.800],[-22.945,16.822],[-22.905,16.815],[-22.880,16.785],[-22.870,16.745],[-22.885,16.700],[-22.905,16.650],[-22.895,16.610],[-22.905,16.585],[-22.935,16.580],[-22.965,16.585],[-22.985,16.620],[-22.990,16.680],[-22.992,16.740]],trees:30,fer:[-22.96,16.565,'✈️ Voos e transfers']}};
+ghost:[[-22.935,16.815],[-22.975,16.588],[-22.885,16.588],[-22.992,16.700],[-22.878,16.700],[-22.900,16.800],[-22.975,16.800]],trees:30,fer:[-22.96,16.565,'✈️ Voos e transfers']}};
+const hull=pts=>{pts=pts.slice().sort((a,b)=>a[0]-b[0]||a[1]-b[1]);const cr=(o,a,b)=>(a[0]-o[0])*(b[1]-o[1])-(a[1]-o[1])*(b[0]-o[0]);const lo=[];for(const p of pts){while(lo.length>1&&cr(lo[lo.length-2],lo[lo.length-1],p)<=0)lo.pop();lo.push(p)}const up=[];for(const p of pts.slice().reverse()){while(up.length>1&&cr(up[up.length-2],up[up.length-1],p)<=0)up.pop();up.push(p)}up.pop();lo.pop();return lo.concat(up)};
 const mp=document.createElementNS(NS,'path'),HS=document.createElementNS(NS,'svg');HS.style.cssText='position:absolute;width:0;height:0';HS.appendChild(mp);document.body.appendChild(HS);
 const sm=(p,cl)=>{const n=p.length,g=i=>cl?p[(i+n)%n]:p[Math.max(0,Math.min(n-1,i))];let d='M'+p[0].join(' ');for(let i=0;i<(cl?n:n-1);i++){const a=g(i-1),b=g(i),c=g(i+1),e=g(i+2);d+=`C${b[0]+(c[0]-a[0])/6} ${b[1]+(c[1]-a[1])/6} ${c[0]-(e[0]-b[0])/6} ${c[1]-(e[1]-b[1])/6} ${c[0]} ${c[1]}`}return d+(cl?'Z':'')};
 const SYM={sid:'plane',res:'palm',sm:'house',cais:'boat',mkt:'stall',alg:'umb',viv:'tree',pp:'umb',ml:'peak',tb:'sun',viana:'sun',esp:'house',bur:'pool',sb:'fish',pal:'house',pl:'waterfall'},TS={air:'plane',city:'house',vil:'house',port:'boat',view:'peak',nat:'tree',hike:'tree',beach:'umb',cult:'church',sport:'church',craft:'basket',wine:'church',tour:'basket'};
 const BIG={sm:86,res:80,sid:66};
 const ids=k=>ALL.filter(a=>!/^r[fepgv]$/.test(a.k)&&true);
 let cur='sal',CURP=[],k=1,k0=1,tx=0,ty=0;
-function build(key){const t=R[key];sd=5;const land=sm(t.coast.map(c=>t.P(...c)),1);mp.setAttribute('d',land);
+function build(key){const t=R[key];sd=5;const pts0=ids(key).map(a=>t.P(a.lon,a.lat)).concat(t.ghost.map(c=>t.P(...c))),Hh0=hull(pts0),hx=Hh0.reduce((a,p)=>a+p[0],0)/Hh0.length,hy=Hh0.reduce((a,p)=>a+p[1],0)/Hh0.length,cp=Hh0.map(p=>{const dx=p[0]-hx,dy=p[1]-hy,l=Math.hypot(dx,dy)||1;return[p[0]+dx/l*90,p[1]+dy/l*90]}),land=sm(cp,1);mp.setAttribute('d',land);
 let s=`<rect width="${t.w}" height="${t.h}" fill="url(#sea)"/>`;for(let i=0;i<170;i++)s+=`<path d="M${rnd()*t.w} ${rnd()*t.h}q18-14 36 0q18 14 36 0" fill="none" stroke="#fff" stroke-width="4" opacity=".55"/>`;
 s+=`<clipPath id="lc"><path d="${land}"/></clipPath><path d="${land}" fill="none" stroke="#d6f3fb" stroke-width="110" stroke-linejoin="round" opacity=".7"/><path d="${land}" fill="#92c96e" stroke="#f0d58c" stroke-width="40" stroke-linejoin="round"/><path d="${land}" fill="#92c96e"/>`;
 if(t.ridge){const r=sm(t.ridge.map(c=>t.P(...c)));s+=`<g clip-path="url(#lc)"><path d="${r}" fill="none" stroke="#6aa656" stroke-width="300" stroke-linecap="round" opacity=".55"/><path d="${r}" fill="none" stroke="#4f8f48" stroke-width="140" stroke-linecap="round" opacity=".6"/></g>`}
@@ -354,11 +360,11 @@ document.addEventListener('click',e=>{const b=e.target.closest('.bgm');if(b)wind
 /* ---- Planear: tempo, sol, excursões, tempos de viagem ---- */
 (()=>{const row=(a,b,c)=>`<div class="pc"><div><div class="pn">${a}</div>${b?`<div class="pd">${b}</div>`:''}</div>${c?`<span class="pp">${c}</span>`:''}</div>`;
 const EX=[['🚙 Volta à ilha em 4x4 (dia 3)','Monte Leão, Terra Boa, Viana, Espargos, Buracona, Shark Bay, Palmeira e Pedra de Lume. ~8–9 h.','❓ ~40–70€'],['⛵ Catamaran com snorkel (dia 5)','Meio dia no mar. Perguntar sobre tartarugas: a desova é de junho a outubro.','❓ ~35–60€'],['🏘️ Santa Maria a pé (dia 6)','Cais, praça, mercado e almoço fora do resort.','grátis'],['🏄 Opcional: kitesurf em Ponta Preta','Aulas e aluguer; vento forte em março.','❓'],['🐋 Opcional: baleias','Costuma haver época de janeiro a abril; confirmar com operadores.','❓']];
-const DR=[['Resort → Aeroporto','~15–17 min'],['Resort → Santa Maria','~5–10 min'],['Resort → Ponta Preta','~5–10 min'],['Resort → Monte Leão','~15 min'],['Resort → Espargos','~20 min'],['Resort → Terra Boa / Viana','~25 min'],['Resort → Pedra de Lume','~30 min'],['Resort → Palmeira / Shark Bay','~30–35 min'],['Resort → Buracona','~35 min']];
+const DR=[['Hotel → Aeroporto','~15 min'],['Hotel → Santa Maria (centro)','~8–11 min a pé'],['Hotel → Ponta Preta / Kite Beach','~7–13 min de carro'],['Hotel → Monte Leão','~15 min'],['Hotel → Espargos','~20 min'],['Hotel → Terra Boa / Viana','~25 min'],['Hotel → Pedra de Lume','~30 min'],['Hotel → Palmeira / Shark Bay','~30–35 min'],['Hotel → Buracona','~35 min']];
 const html=`<div class="panel" id="planear"><h2>Planear & imprevistos</h2><p class="lead">Previsão, luz do dia, excursões e tempos de viagem. Valores indicativos: confirmem antes de ir.</p>
 <div class="blk"><h3>🌦️ Previsão</h3><div id="wx"><p class="lead">A previsão aparece quando faltarem 16 dias para a viagem.</p></div><div class="note">Em março costuma fazer sol e vento forte, com cerca de 22–26 °C. Fonte: Open-Meteo.</div></div>
 <div class="blk"><h3>🌅 Luz do dia em Santa Maria</h3><div class="pl" id="sun"></div></div>
-<div class="blk"><h3>🧭 Excursões (3 saídas do resort)</h3><div class="pl">${EX.map(r=>row(r[0],r[1],r[2])).join('')}</div><div class="note">❓ = estimativa não verificada. Reservem com o resort ou operadores locais.</div></div>
+<div class="blk"><h3>🧭 Excursões (3 saídas do resort)</h3><div class="pl">${EX.map(r=>row(r[0],r[1],r[2])).join('')}</div><div class="note">❓ = estimativa não verificada. Reservem com o hotel ou operadores locais.</div></div>
 <div class="blk"><h3>🚗 Tempos de viagem (aprox.)</h3><div class="pl">${DR.map(r=>row(r[0],'',r[1])).join('')}</div></div>
 <div class="blk"><h3>🕐 Hora e documentos</h3><ul><li>Cabo Verde fica 1 h atrás de Portugal até 27 de março, e 2 h atrás a partir de 28 (mudança de hora em Portugal).</li><li>Passaporte válido, registo online (EASE) e taxa de segurança aeroportuária: confirmar regras atuais.</li><li>Seguro de viagem com assistência médica.</li></ul></div></div>`;
 $('pratico').insertAdjacentHTML('beforebegin',html);
